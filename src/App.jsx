@@ -1,10 +1,11 @@
-import { useReducer, useState } from "react";
+import { useReducer} from "react";
 
 import Login from "./components/Login";
 import Register from "./components/Register";
 import SwitchButtons from "./components/SwitchButtons";
 
 import "./App.css";
+
 const reducer = (state, action) => {
   if (action.type === "login") return false;
   return true;
