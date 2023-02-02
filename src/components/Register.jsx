@@ -22,7 +22,7 @@ export default function Register() {
           <option value="karshenasi" className="bg-gray-500">
             کارشناسی
           </option>
-          <option value="arshad" className="bg-gray-500">
+          <option value="karshenasi-arshad" className="bg-gray-500">
             کارشناسی ارشد
           </option>
         </select>
