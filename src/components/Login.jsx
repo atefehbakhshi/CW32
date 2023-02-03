@@ -1,11 +1,28 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import PasswordVisibility from "./PasswordVisibility";
 
 export default function Login() {
   const [inputType, setInputType] = useState("password");
+  const loginEmail = useRef();
+  const loginPassword = useRef();
+
+  const storedInfo = JSON.parse(localStorage.getItem("user"));
 
   const loginForm = (event) => {
     event.preventDefault();
+    const loginInfo = {
+      email: loginEmail.current.value,
+      password: loginPassword.current.value,
+    };
+
+    if (
+      storedInfo.email === loginInfo.email &&
+      storedInfo.password === loginInfo.password
+    ) {
+      console.log(storedInfo);
+    } else {
+      alert("User Not Found!!!");
+    }
   };
 
   return (
@@ -16,6 +33,7 @@ export default function Login() {
           type="email"
           placeholder="پست الکترونیک"
           required
+          ref={loginEmail}
           className="bg-transparent border-[#44535a] border-2 p-1 "
         />
         <div className=" border-[#44535a] border-2 p-1 flex items-center justify-between">
@@ -23,6 +41,7 @@ export default function Login() {
             type={inputType}
             placeholder="کلمه عبور"
             required
+            ref={loginPassword}
             className="bg-transparent w-11/12"
           />
           <PasswordVisibility setInputType={setInputType} />
