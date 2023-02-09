@@ -3,7 +3,7 @@ import cityName from "../db";
 
 import PasswordVisibility from "./PasswordVisibility";
 
-export default function Register() {
+const Register = () => {
   const [inputType, setInputType] = useState("password");
   const [showField, setShowField] = useState(false);
   const [showCounty, setShowCounty] = useState(false);
@@ -149,4 +149,6 @@ export default function Register() {
       </form>
     </div>
   );
-}
+};
+
+export default Register;

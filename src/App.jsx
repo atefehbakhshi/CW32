@@ -1,24 +1,20 @@
-import { useReducer } from "react";
-
+import { useContext } from "react";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import SwitchButtons from "./components/SwitchButtons";
-
+import { LoginContext } from "./context/LoginContext";
 import "./App.css";
-import IsLoginProvider, { useLogin } from "./context";
 
 function App() {
-  const { switchButton, dispatch } = useLogin();
-  console.log("switchButtons", switchButton);
+  const { switchBtn } = useContext(LoginContext);
+
   return (
-    <IsLoginProvider>
-      <div className="bg-[#25333c] h-screen flex items-center justify-center">
-        <div className="w-1/3 text-white border-white border-2 p-4">
-          <SwitchButtons />
-          {!switchButton.login ? <Login /> : <Register />}
-        </div>
+    <div className="bg-[#25333c] h-screen flex items-center justify-center">
+      <div className="w-1/3 text-white border-white border-2 p-4">
+        <SwitchButtons />
+        {!switchBtn ? <Login /> : <Register />}
       </div>
-    </IsLoginProvider>
+    </div>
   );
 }
 
